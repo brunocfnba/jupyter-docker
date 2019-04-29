@@ -3,7 +3,7 @@ from notebook.auth import passwd
 
 if len(sys.argv) < 2:
     sys. exit("You must define a password")
-elif len(sys.argv[1]) < 5:
+elif len(sys.argv[1]) < 8:
     sys.exit("Password must have at least 8 characters!")
 
 pwd = passwd(sys.argv[1])
