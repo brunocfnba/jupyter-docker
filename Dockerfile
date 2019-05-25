@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ENV SPARK_VERSION="2.4.2"
+ENV SPARK_VERSION="2.4.3"
 ENV SPARK_HADOOP_VERSION="2.7"
 ENV SPARK_HOME=/home/spark-jupyter/spark
 ENV PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
@@ -16,14 +16,14 @@ ARG PYTHONDEPS="python-dotenv jupyter"
 RUN python3 -m pip install ${PYTHONDEPS}
 
 RUN mkdir -p /home/spark-jupyter && cd /home/spark-jupyter && \
-    wget https://www-eu.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_VERSION}.tgz
+    wget http://mirrors.ocf.berkeley.edu/apache/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_VERSION}.tgz
 
 COPY init.sh /opt/init.sh
 
 RUN chmod -R 775 /home/spark-jupyter/* && chmod -R 775 /opt/init.sh && \
-    cd /home/spark-jupyter && tar -xvf /home/spark-jupyter/spark-2.4.2-bin-hadoop2.7.tgz && \
-    mv /home/spark-jupyter/spark-2.4.2-bin-hadoop2.7 /home/spark-jupyter/spark && \
-    rm /home/spark-jupyter/spark-2.4.2-bin-hadoop2.7.tgz
+    cd /home/spark-jupyter && tar -xvf /home/spark-jupyter/spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_VERSION}.tgz && \
+    mv /home/spark-jupyter/spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_VERSION} /home/spark-jupyter/spark && \
+    rm /home/spark-jupyter/spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_VERSION}.tgz
 
 COPY set_pwd.py ${SPARK_HOME}/set_pwd.py
 
