@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ENV SPARK_VERSION="2.4.3"
+ENV SPARK_VERSION="2.4.5"
 ENV SPARK_HADOOP_VERSION="2.7"
 ENV SPARK_HOME=/home/spark-jupyter/spark
 ENV PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
@@ -29,11 +29,11 @@ COPY set_pwd.py ${SPARK_HOME}/set_pwd.py
 
 RUN jupyter notebook --generate-config && \
     chmod -R 775 ${SPARK_HOME}/set_pwd.py && \
-    wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.45/aws-java-sdk-s3-1.11.45.jar -O ${SPARK_HOME}/jars/aws-java-sdk-s3-1.11.45.jar && \
-    wget http://central.maven.org/maven2/com/ibm/stocator/stocator/1.0.25/stocator-1.0.25.jar -O ${SPARK_HOME}/jars/stocator-1.0.25.jar && \
-    wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.45/aws-java-sdk-1.11.45.jar -O ${SPARK_HOME}/jars/aws-java-sdk-1.11.45.jar && \
-    wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.415/aws-java-sdk-core-1.11.415.jar -O ${SPARK_HOME}/jars/aws-java-sdk-core-1.11.415.jar && \
-    wget http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.7/hadoop-aws-2.7.7.jar -O ${SPARK_HOME}/jars/hadoop-aws-2.7.7.jar
+    wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.762/aws-java-sdk-s3-1.11.762.jar -O ${SPARK_HOME}/jars/aws-java-sdk-s3-1.11.762.jar && \
+    wget https://repo1.maven.org/maven2/com/ibm/stocator/stocator/1.1.0/stocator-1.1.0.jar -O ${SPARK_HOME}/jars/stocator-1.1.0.jar && \
+    wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.762/aws-java-sdk-1.11.762.jar -O ${SPARK_HOME}/jars/aws-java-sdk-1.11.762.jar && \
+    wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.762/aws-java-sdk-core-1.11.762.jar -O ${SPARK_HOME}/jars/aws-java-sdk-core-1.11.762.jar && \
+    wget https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.1/hadoop-aws-3.2.1.jar -O ${SPARK_HOME}/jars/hadoop-aws-3.2.1.jar
 
 WORKDIR /home/spark-jupyter
 
