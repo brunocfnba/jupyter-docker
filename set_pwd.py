@@ -12,7 +12,7 @@ pwd = passwd(sys.argv[1])
 
 jupyter_row = "c.NotebookApp.password = u'{}'".format(pwd)
 
-jconfig = open("/root/.jupyter/jupyter_notebook_config.py", "a+")
+jconfig = open("/root/.jupyter/jupyter_lab_config.py", "a+")
 
 jconfig.write(jupyter_row)
 
