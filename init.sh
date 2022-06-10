@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if grep -Rq "c.NotebookApp.password = u" "/root/.jupyter/jupyter_notebook_config.py"
+if grep -Rq "c.NotebookApp.password = u" "/root/.jupyter/jupyter_lab_config.py"
 then
     echo "No updates required"
 else
