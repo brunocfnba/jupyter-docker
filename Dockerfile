@@ -12,7 +12,7 @@ RUN apt-get update \
     && apt install -y python python3-pip \
     wget curl unzip zip vim
 
-ARG PYTHONDEPS="python-dotenv jupyterlab==3.4.2"
+ARG PYTHONDEPS="python-dotenv jupyterlab==3.4.2 notebook=6.4.12"
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install ${PYTHONDEPS}
 
