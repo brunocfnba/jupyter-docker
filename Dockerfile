@@ -1,10 +1,10 @@
 FROM openjdk:11
 
-ENV SPARK_VERSION="3.2.1"
-ENV SPARK_HADOOP_VERSION="3.2"
+ENV SPARK_VERSION="3.4.1"
+ENV SPARK_HADOOP_VERSION="3"
 ENV SPARK_HOME=/home/spark-jupyter/spark
 ENV PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
-ENV PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.3-src.zip:$PYTHONPATH"
+ENV PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH"
 ENV PYSPARK_PYTHON=python3
 ENV PYTHONPATH=${SPARK_HOME}/python/build:$PYTHONPATH
 
@@ -12,7 +12,7 @@ RUN apt-get update \
     && apt install -y python python3-pip \
     wget curl unzip zip vim
 
-ARG PYTHONDEPS="python-dotenv jupyterlab==3.4.2 notebook=6.4.12"
+ARG PYTHONDEPS="python-dotenv jupyterlab==3.4.2 notebook==6.4.12"
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install ${PYTHONDEPS}
 
